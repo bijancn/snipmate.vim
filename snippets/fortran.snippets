@@ -28,7 +28,8 @@ snippet use
 snippet module
 	module ${1:name}
 		implicit none
-		${2:contents}
+    private
+		${2:declarations}
 	contains
 		${3:!TODO}
 	end module $1
@@ -47,7 +48,7 @@ snippet	until
 snippet	while
 	while ${1:logical expression} do
 		${2:statements}
-	enddo
+	end do
 # OMP parallel do loop
 snippet ompdo
 	!$omp parallel do private(${5:privatevars}) shared(${6:sharedvars})
@@ -87,25 +88,24 @@ snippet type
 # Subroutines
 snippet sub
 	subroutine ${1:name}(${2:parameters})
-		implicit none
 		${3}
 	end subroutine $1
+
 # Functions
 snippet func
 	function ${1:name}(${2:parameters})
-		implicit none
 		${3}
 	end function $1
+
 # Pure functions
 snippet pfunc
 	pure function ${1:name}(${2:parameters})
-		implicit none
 		${3}
 	end function $1
+
 # Elemental functions
 snippet efunc
 	elemental function ${1:name}(${2:parameters})
-		implicit none
 		${3}
 	end function $1
 
@@ -121,7 +121,6 @@ snippet ifelse
 	else
 		${3:! TODO}
 	end if
-
 
 # Read statement
 snippet read 
